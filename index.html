@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azalia Quincy Ariesty - Portofolio</title>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #f43f5e; /* Menggunakan nuansa merah/pink hangat yang kreatif */
+            --accent-hover: #e11d48;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        /* Container Bento Grid */
+        .bento-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 150px;
+            gap: 1.25rem;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        /* Styling Umum Kotak Bento */
+        .bento-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px -10px rgba(244, 63, 94, 0.2);
+        }
+
+        /* Ukuran Grid yang Berbeda */
+        .card-profile {
+            grid-column: span 2;
+            grid-row: span 2;
+            background: linear-gradient(135deg, #1e293b 0%, #111827 100%);
+            justify-content: flex-end;
+        }
+
+        .card-about {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+
+        .card-skills {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+
+        .card-hobby {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .card-social {
+            grid-column: span 1;
+            grid-row: span 1;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .card-status {
+            grid-column: span 1;
+            grid-row: span 1;
+            justify-content: center;
+        }
+
+        /* Konten di dalam Kartu */
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .tagline {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Keahlian Badges */
+        .skills-list {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .skill-badge {
+            background-color: rgba(244, 63, 94, 0.1);
+            color: var(--accent);
+            padding: 0.4rem 0.9rem;
+            border-radius: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .social-icon {
+            font-size: 2rem;
+            color: var(--text-main);
+            transition: color 0.2s;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            color: var(--accent);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #4ade80;
+            background-color: rgba(74, 222, 128, 0.1);
+            padding: 0.3rem 0.75rem;
+            border-radius: 2rem;
+            width: fit-content;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #4ade80;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(74, 222, 128, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+        }
+
+        /* Responsif untuk Layar HP / Tablet */
+        @media (max-width: 768px) {
+            .bento-container {
+                grid-template-columns: 1fr;
+                grid-auto-rows: auto;
+            }
+            .bento-card {
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+                min-height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bento-container">
+        
+        <!-- 1. KARTU PROFIL -->
+        <div class="bento-card card-profile">
+            <div>
+                <span class="tagline">✨ Halo, Nama Saya</span>
+                <h1>Azalia Quincy Ariesty</h1>
+            </div>
+            <p>Selalu bersemangat dalam melakukan apa pun, mengeksplorasi ide-ide kreatif baru, dan menikmati setiap proses pembelajaran!</p>
+        </div>
+
+        <!-- 2. KARTU STATUS -->
+        <div class="bento-card card-status">
+            <span class="tagline">Vibe</span>
+            <div class="status-badge">
+                <div class="pulse-dot"></div>
+                Penuh Semangat!
+            </div>
+        </div>
+
+        <!-- 3. KARTU SOSIAL MEDIA (Instagram / Lainnya) -->
+        <div class="bento-card card-social">
+            <a href="https://instagram.com" target="_blank" class="social-icon">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Instagram</p>
+        </div>
+
+        <!-- 4. KARTU TENTANG SAYA -->
+        <div class="bento-card card-about">
+            <h2>Tentang Saya</h2>
+            <p>Aku adalah seorang yang sangat suka menonton video—mulai dari film, video kreatif, hingga dokumenter yang menginspirasi imajinasi dan caraku bercerita.</p>
+        </div>
+
+        <!-- 5. KARTU KEAHLIAN -->
+        <div class="bento-card card-skills">
+            <h2>Keahlian & Kreativitas</h2>
+            <div class="skills-list">
+                <span class="skill-badge"><i class="fa-solid fa-utensils"></i> Memasak</span>
+                <span class="skill-badge"><i class="fa-solid fa-book-open"></i> Membuat Cerita</span>
+                <span class="skill-badge"><i class="fa-solid fa-paintbrush"></i> Menggambar</span>
+            </div>
+        </div>
+
+        <!-- 6. KARTU HOBI / MENONTON VIDEO -->
+        <div class="bento-card card-hobby">
+            <div>
+                <span class="tagline">Hobi & Favorit</span>
+                <h2>Sinema & Visual Storytelling</h2>
+                <p style="margin-top: 0.5rem;">Menonton video bukan sekadar hiburan bagiku, tapi juga sumber inspirasi visual untuk menuangkan ide ke dalam gambar dan tulisan cerita.</p>
+            </div>
+            <div style="margin-top: 1rem; color: var(--accent); font-weight: 600; font-size: 0.9rem;">
+                <i class="fa-solid fa-clapperboard"></i> Selalu siap berkarya!
+            </div>
+        </div>
+
+        <!-- 7. KARTU SOSIAL MEDIA (LinkedIn / GitHub) -->
+        <div class="bento-card card-social">
+            <a href="https://linkedin.com" target="_blank" class="social-icon">
+                <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">LinkedIn</p>
+        </div>
+
+        <!-- 8. KARTU KONTAK EMAIL -->
+        <div class="bento-card card-social" style="grid-column: span 1;">
+            <a href="mailto:azalia@example.com" class="social-icon">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Email</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
